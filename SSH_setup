@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+ssh-keygen -t rsa
+
+echo "Geef de hostname in: "
+read host
+
+echo "Geef het ip-adres van de host: "
+read ip
+
+echo "Het paswoord van je remote device zal nu 2 keer worden gevraagd"
+
+ssh $host@$ip 'mkdir ~/.ssh && chmod -R 600 ~/.ssh && chmod 700 ~/.ssh'
+
+# ssh $host@$ip 'chmod -R 600 ~/.ssh'
+#
+# ssh $host@$ip 'chmod 700 ~/.ssh'
+
+scp ~/.ssh/id_rsa.pub $host@$ip:~/.ssh/authorized_keys

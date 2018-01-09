@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo "Geef de te kopiëren folder in: "
+read folder
+
+echo "Geef de hostname in: "
+read host
+
+echo "Geef het ip-adres van de host: "
+read ip
+
+echo "Geef de bestemmingsfolder in: "
+read dest
+
+scp -r $folder $host@$ip:$dest
